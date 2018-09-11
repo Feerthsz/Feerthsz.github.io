@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <title>Jogo da Forca</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <link href="css.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <ul class="list">
+    <li>
+      <b>Jogo da Forca</b>
+    </li>
+
+    <li class="lista">Digite a letra no campo destacado e pressione "Enter" para enviá-la.</li>
+    <li>
+      <button class="pretty-button" id="start">Clique para começar</button>
+    </li>
+    <li>Vidas:
+      <b id="area-vidas">6 vidas</b>
+    </li>
+    <li>Erros:
+      <span id="area-erro"></span>
+    </li>
+
+    <li id="area-resposta">&nbsp;</li>
+    <li>
+      <input type="text" id="area-input" rows="1" cols="20" maxlength="1" pattern="[a-z]" >
+    </li>
+  </ul>
+
+  <script src="js.js"></script>
+</body>
+
+</html>
