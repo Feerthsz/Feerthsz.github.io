@@ -25,6 +25,21 @@
 
 
 <body onload="play_game()">
+  
+  </header>
+  <div class="w3-row w3-padding w3-border">
+    <div class="w3-col l12 s12">
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <h1 style="text-align: center" ;>Play</h1>
+        <br>
+        <div style="text-align: center;">
+          <div id="msg" ></div>
+          <canvas id="playArea" width="450" height="300">Seu browser ta desatualizado brother.</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
   <script type="text/javascript">
     function play_game() {
       var level = 160;
@@ -96,7 +111,7 @@
         }
         else if (!tn.length) {
           var msg_score = document.getElementById("msg");
-          msg_score.innerHTML = "Valeu pelo jogo <br /> Sua pontuacao : <b>" + score + "</b><br /><br /><input type='button' value='Jogar denovo' onclick='window.location.reload();' />";
+          msg_score.innerHTML = "Obrigado por jogar!!  <br /> Sua pontuacao : <b>" + score + "</b><br /><br /><input type='button' value='Jogar' onclick='window.location.reload();' />";
           document.getElementById("playArea").style.display = 'none';
           window.clearInterval(interval);
         }
@@ -125,20 +140,6 @@
       }
     }
   </script>
-  </header>
-  <div class="w3-row w3-padding w3-border">
-    <div class="w3-col l12 s12">
-      <div class="w3-container w3-white w3-margin w3-padding-large">
-        <h1 style="text-align: center" ;>Play</h1>
-        <br>
-        <div>
-          <div id="msg" style="text-align: center;"></div>
-          <canvas id="playArea" width="450" height="300">Seu browser ta desatualizado brother.</canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
 </body>
 
 </html>
