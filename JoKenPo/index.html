@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+  <title>Jo Ken Po</title>
+</head>
+<style media="screen">
+  /* * {
+    color: white;
+  } */
+  #Resultado{
+    padding-left: 1.2%;
+  }
+  #Computador{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;   
+    padding-left: 100px;
+  }
+  
+</style>
+
+<body>  
+  <div class="container">
+      
+    <div class="row" id="Computador">
+      <h4>Computador: </h4>
+      <div class="col s1">
+        <img src="" alt="" class="imagemMao">
+      </div>
+    </div>
+    <div class="row" id="Usuario">
+        <h4>Você: </h4>
+      <div class="col s2 pedra">
+        <img src="img/pedra.png" alt="">
+      </div>
+      <div class="col s2 papel">
+        <img src="img/papel.png" alt="">
+      </div>
+      <div class="col s2 tesoura">
+        <img src="img/tesoura.png" alt="">
+      </div>
+    </div>
+    <div class="col s1 card-panel teal ganhou-perdeu"></div>
+    <div class="row" id="Resultado">
+      <div class="col s1 card-panel teal" >Vitorias</div>
+      <div class="col s1 card-panel teal vitorias" >0</div>
+    </div>
+    <div class="row" id="Resultado">
+      <div class="col s1 card-panel teal" >Derrotas</div>
+      <div class="col s1 card-panel teal derrotas">0</div>
+    </div>
+    <div class="row" id="Resultado">
+      <div class="col s1 card-panel teal" >Empates</div>
+      <div class="col s1 card-panel teal empates" >0</div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  var numeroAleatorio = 0;
+  var numeroClicado = 0;
+  var suasVitorias = 0;
+  var suasDerrotas = 0;
+  var empates = 0;
+
+  var ganhouPerdeu = $(".ganhou-perdeu");
+
+  $(".pedra").click(function () {
+    numeroClicado = 0;
+    geraNumero();
+    resultado();
+  });
+  $(".papel").click(function () {
+    numeroClicado = 1;
+    geraNumero();
+    resultado()
+  });
+  $(".tesoura").click(function () {
+    numeroClicado = 2;
+    geraNumero();
+    resultado()
+  });
+
+  function dandoNome(numeroClicado) {
+    if (numeroClicado == 0) {
+      numeroClicado = "Pedra";
+    }
+
+    if (numeroClicado == 1) {
+      numeroClicado = "Papel";
+    }
+
+    if (numeroClicado == 2) {
+      numeroClicado = "Tesoura";
+    }
+
+    return numeroClicado;
+  }
+
+  function geraNumero() {
+    numeroAleatorio = Math.floor(Math.random() * 3);
+    colocaImagem();
+  }
+
+  function resultado() {
+    if (numeroClicado == numeroAleatorio) {
+      numDeEmpates();
+      ganhouPerdeu.text("Você empatou com o computador!");
+    } else {
+      if (numeroClicado == 0) {
+        if (numeroAleatorio == 2) {
+          contadorDeVitorias();
+          ganhouPerdeu.text("Você ganhou!");
+        } else {
+          contadorDeDerrotas();
+          ganhouPerdeu.text("Você perdeu!");
+        }
+      }
+      if (numeroClicado == 1) {
+        if (numeroAleatorio == 0) {
+          contadorDeVitorias();
+          ganhouPerdeu.text("Você ganhou!");
+        } else {
+          contadorDeDerrotas();
+          ganhouPerdeu.text("Você perdeu!");
+        }
+      }
+      if (numeroClicado == 2) {
+        if (numeroAleatorio == 1) {
+          contadorDeVitorias();
+          ganhouPerdeu.text("Você ganhou!");
+        } else {
+          contadorDeDerrotas();
+          ganhouPerdeu.text("Você perdeu!");
+        }
+      }
+    }
+  }
+
+  function colocaImagem() {
+    var classImagens = $(".imagemMao");
+    if (numeroAleatorio == 0) {
+      classImagens.attr("src", "img/pedra.png");
+    }
+    if (numeroAleatorio == 1) {
+      classImagens.attr("src", "img/papel.png");
+    }
+    if (numeroAleatorio == 2) {
+      classImagens.attr("src", "img/tesoura.png");
+    }
+  }
+
+  function contadorDeVitorias() {
+    suasVitorias++;
+    $(".vitorias").text(suasVitorias);
+  }
+
+  function contadorDeDerrotas() {
+    suasDerrotas++;
+    $(".derrotas").text(suasDerrotas);
+  }
+
+  function numDeEmpates() {
+    empates++;
+    $(".empates").text(empates);
+  }
+
+</script>
+
+</html>
