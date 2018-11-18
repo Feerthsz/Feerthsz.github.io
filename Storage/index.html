@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Local/Session Storage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <script>
+        function SalvarNome() {            
+            var nome = document.getElementById("Nome").value;
+            localStorage.setItem("nome", nome);
+            
+        }
+        function SalvarTexto() {            
+            var txt = document.getElementById("comentario").value;
+            localStorage.setItem("comentario", comentario);            
+        }
+
+        function MontarDia() {
+            var hoje = new Date();
+            var dd = hoje.getDate();
+            var mm = hoje.getMonth() + 1; //janeiro é 0
+            var aaaa = hoje.getFullYear();
+            ultimoAcesso = dd + '/' + mm + '/' + aaaa;
+        }
+ 
+        function Ola() {
+            var nome1 = localStorage.nome;
+            if (nome1 != undefined){                            
+                document.getElementById("colocar-nome").innerHTML = "Bem vindo" + " " + nome1;
+            }
+            else
+                alert("Bem vindo");
+            var dia = localStorage.ultimoAcesso;
+            if (dia == undefined) {
+                MontarDia();
+                document.getElementById("dia").innerHTML = ultimoAcesso;
+            }
+            else
+                document.getElementById("dia").innerHTML = dia;
+            MontarDia();
+            localStorage.setItem("ultimoAcesso", ultimoAcesso);
+            var comentario = localStorage.comentario;
+            if(comentario != undefined)
+            {
+                document.getElementById("comentario").innerHTML = comentario.value;
+                comentario.value = comentario.value
+            }
+        }        
+    </script>
+</head>
+
+<body onload="Ola()">
+    <div class="container bg">
+        <div class="row">
+            <p id="acesso">Seu ultimo acesso foi em:</p>
+            <p ><u id="dia"></u></p>
+        </div>
+        <div class="row" id="colocar-nome">
+            <p id="SeuNome">Seu nome:</p>
+            <input type="text" id="Nome">
+            <input type="button" value="Salvar" onclick="SalvarNome()" style="
+            margin-left: 5px;">
+        </div>
+        <form class="comentario">
+            <textarea id="comentario" name="comentario" rows="20" cols="100" style="height: 466px;"></textarea>            
+        </form>
+        <input type="button" value="Salvar" onclick="SalvarTexto()">
+
+        
+    </div>
+</body>
+
+</html>
