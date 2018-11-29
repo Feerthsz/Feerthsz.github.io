@@ -17,7 +17,7 @@
         }
         function SalvarTexto() {            
             var txt = document.getElementById("comentario").value;
-            localStorage.setItem("comentario", comentario);            
+            localStorage.setItem("comentario", txt);            
         }
 
         function MontarDia() {
@@ -42,13 +42,16 @@
             }
             else
                 document.getElementById("dia").innerHTML = dia;
+
             MontarDia();
+
             localStorage.setItem("ultimoAcesso", ultimoAcesso);
+
             var comentario = localStorage.comentario;
+
             if(comentario != undefined)
             {
-                document.getElementById("comentario").innerHTML = comentario.value;
-                comentario.value = comentario.value
+                document.getElementById("comentario").innerHTML = comentario;                
             }
         }        
     </script>
